@@ -22,5 +22,5 @@ In order to add `Faker` to your page, you'll need to include it via [CDN](https:
 ### Task 1
 1. Go to [cdnjs](https://cdnjs.com/libraries) and search for "Faker".
 2. Click on the "Copy Script Tag" (</>) icon. 
-3. Paste the copied code into the appropriate place in `./part_1/index.html`
+3. Paste the copied code into the appropriate place in ./task_1/index.html
 4. Preview the page and refresh. Notice how the name keeps changing. 
