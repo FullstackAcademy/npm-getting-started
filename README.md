@@ -21,4 +21,4 @@ or if you don't have that installed a "Git for Bash" shell. On Mac OS and Linux,
 
 
 ## Get Going!
-Now, head on over to `./step_1/README.md` and start hacking!
+Now, head on over to [Step 1](./step_1/README.md) and start hacking!
