@@ -27,7 +27,7 @@ In order to add `Faker` to your page, you'll need to include it via [CDN](https:
 4. Preview the page and refresh. Notice how the name keeps changing! 
 
 ### Solution
-You can find the solution on branch [1.1.solution](https://github.com/edwin-fsa/npm-getting-started/tree/1.1.solution)
+You can find the solution on branch [task_1_solution](https://github.com/edwin-fsa/npm-getting-started/tree/task_1_solution)
 
 ## Part II: NPM Projects
 In modern projects, instead of using CDNs, we'll use NPM to create projects. Thus, before we can recreate the above
@@ -42,9 +42,6 @@ mkdir -p task_2/random-names
 cd task_2/random-names
 npm init -y
 ```
-### Solution
-You can find the solution on branch [1.1.solution](https://github.com/edwin-fsa/npm-getting-started/tree/1.1.solution)
-
 If done successfully, you should see that a new file named [./task_2/random-names/package.json](./task_2/random-names/package.json)
 ```json
 {
@@ -67,9 +64,8 @@ of the project as well as scripts that can be run respectively.
 You can run scripts by using the command `npm run <script name>`, replacing `<script name>` with the keys of the `scripts` object. So for example,
 you can run `yarn run test` from inside of the [./task_2/random-names](./task_2/random-names) directory to see the Error message "Error: no test specified" printed to your console.
 
-
 ### Solution
-You can find the solution on branch [2.2.solution](https://github.com/edwin-fsa/npm-getting-started/tree/2.2.solution)
+You can find the solution on branch [task_2_solution](https://github.com/edwin-fsa/npm-getting-started/tree/task_2_solution)
 
 
 ## Part III: NPM Libraries
@@ -95,4 +91,4 @@ Before this app will work, we'll need to install faker using npm.
 4. Run your app a few times by running `npm run start`. Notice again, you see random names showing up!
 
 ### Solution
-You can find the solution on branch [3.3.solution](https://github.com/edwin-fsa/npm-getting-started/tree/3.3.solution)
+You can find the solution on branch [task_3_solution](https://github.com/edwin-fsa/npm-getting-started/tree/task_3_solution)
