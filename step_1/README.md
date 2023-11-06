@@ -1,6 +1,7 @@
-# Step 1: Creating an NPM project
+# Lesson 1: JavaScdript Libraries
 
 By the end of this step, you should understand how to:
+- use CDN libraries to add JavaScript libraries to vanilla HTML/CSS/JavaScript Projects
 - create a new NPM project
 - search for JavaScript libraries to use in that project
 - install and use those JavaScript libraries
@@ -24,3 +25,44 @@ In order to add `Faker` to your page, you'll need to include it via [CDN](https:
 2. Click on the "Copy Script Tag" (</>) icon. 
 3. Paste the copied code into the appropriate place in ./task_1/index.html
 4. Preview the page and refresh. Notice how the name keeps changing. 
+
+### Solution
+You can find the solution on branch [1.1.solution](https://github.com/edwin-fsa/npm-getting-started/tree/1.1.solution)
+
+## Part II: NPM
+In modern projects, instead of using CDNs, we'll use NPM to create projects. Thus, before we can recreate the above
+(albeit simple) app using NPM packages, we need to take a detour to talk briefly about NPM itself.
+
+To create a NPM project, you need to call `npm init`. Passing the `-y` flag will choose some sane defaults for you.
+
+### Task 2
+Create a new project named `random-names` using the following commands:
+```
+mkdir -p task_2/random-names
+cd task_2/random-names
+npm init -y
+```
+### Solution
+You can find the solution on branch [1.1.solution](https://github.com/edwin-fsa/npm-getting-started/tree/1.1.solution)
+
+If done successfully, you should see that a new file named [./task_2/random-names/package.json](./task_2/random-names/package.json)
+```json
+{
+  "name": "random-names",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+This JSON file describes our package. For now, the most important parts are the `name` and the `scripts` sections, which tell us the name
+of the project as well as scripts that can be run respectively. 
+
+You can run scripts by using the command `npm run <script name>`, replacing `<script name>` with the keys of the `scripts` object. So for example,
+you can run `yarn run test` to see the Error message "Error: no test specified" printed to your console.
