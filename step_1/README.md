@@ -65,4 +65,17 @@ This JSON file describes our package. For now, the most important parts are the 
 of the project as well as scripts that can be run respectively. 
 
 You can run scripts by using the command `npm run <script name>`, replacing `<script name>` with the keys of the `scripts` object. So for example,
-you can run `yarn run test` to see the Error message "Error: no test specified" printed to your console.
+you can run `yarn run test` from inside of the [./task_2/random-names](./task_2/random-names) directory to see the Error message "Error: no test specified" printed to your console.
+
+
+### Solution
+You can find the solution on branch [2.2.solution](https://github.com/edwin-fsa/npm-getting-started/tree/2.2.solution)
+
+### Task 3
+We still need to learn quite a few concepts before we can make a web app that mirrors the functionality of the app we made in part 1. For now,
+let's create a console version of the app. That is, running `npm run` will print a new random name the console.
+
+To get the starter code, simply commit your current changes (if you haven't already) and merge the `random-names-starter` branch into this one:
+```
+git merge random-names-starter
+```
