@@ -90,6 +90,5 @@ Before this app will work, we'll need to install faker using npm.
 3. On the right side of the page, you'll see a section called "install". Copy that command and run it in a terminal in your [./task_2/random-names](./task_2/random-names) directory.
 4. Run your app a few times by running `npm run start`. Notice again, you see random names showing up!
 
-
 ### Solution
 You can find the solution on branch [task_3_solution](https://github.com/edwin-fsa/npm-getting-started/tree/task_3_solution)
