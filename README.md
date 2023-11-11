@@ -6,6 +6,11 @@ and use JavaScript libraries. By the time you are done, you should know how to:
 - run those projects on your local machine
 
 ## How to use this repo
+Fork this repo, make sure to *uncheck* the box that says "Copy the `main` branch only". If you do 
+check it, you *won't* get access to the solution branches.
+
+![Screenshot of the fork page](./screenshots/fork.png)
+
 Each step of this project has a corresponding directory (`./step_1`, `./step_2`, etc). Your job
 is to read the `README.md` inside of each step and complete the steps listed.
 
