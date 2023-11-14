@@ -50,14 +50,14 @@ You can find the solution on branch [task_1_solution](https://github.com/edwin-f
 In modern projects, instead of using CDNs, we'll use NPM to create projects. Thus, before we can recreate the above
 (albeit simple) app using NPM packages, we need to take a detour to talk briefly about NPM itself.
 
-To create a NPM project, you need to call `NPM init`. Passing the `-y` flag will choose some sane defaults for you.
+To create a NPM project, you need to call `npm init`. Passing the `-y` flag will choose some sane defaults for you.
 
 ### Task 2
 Create a new project named `random-names` using the following commands:
 ```
 mkdir -p task_2/random-names
 cd task_2/random-names
-NPM init -y
+npm init -y
 ```
 If done successfully, you should see that a new file named [./task_2/random-names/package.json](./task_2/random-names/package.json)
 ```json
@@ -78,11 +78,11 @@ If done successfully, you should see that a new file named [./task_2/random-name
 This JSON file describes our package. For now, the most important parts are the `name` and the `scripts` sections, which tell us the name
 of the project as well as scripts that can be run respectively. 
 
-You can run scripts by using the command `NPM run <script name>`, replacing `<script name>` with the keys of the `scripts` object. So for example,
-you can run `NPM run test` from inside of the [./task_2/random-names](./task_2/random-names) directory to see the Error message "Error: no test specified" printed to your console.
+You can run scripts by using the command `npm run <script name>`, replacing `<script name>` with the keys of the `scripts` object. So for example,
+you can run `npm run test` from inside of the [./task_2/random-names](./task_2/random-names) directory to see the Error message "Error: no test specified" printed to your console.
 
 ### Solution
-You can find the solution on branch [task_2_solution](https://github.com/edwin-fsa/NPM-getting-started/tree/task_2_solution)
+You can find the solution on branch [task_2_solution](https://github.com/edwin-fsa/npm-getting-started/tree/task_2_solution)
 
 
 ## Part III: NPM Scripts
