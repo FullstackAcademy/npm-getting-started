@@ -479,7 +479,6 @@ export const FlavorList = (props) => {
 } 
 ```
 
-
 Here' we use the flavor itself as a key. This is not very safe because flavors might not be unique. You might be tempted to use the index as a key, but [that is frowed upon](https://react.dev/learn/rendering-lists#why-does-react-need-keys). 
 
 There are a few ways we could address this, but as our final app will guarantee that flavors are unique, we won't concern ourselves with the problem here. Just be sure to enter unique flavors for now!
@@ -523,3 +522,98 @@ setFlavors([
   newFlavor
 ]);
 ```
+
+### Part VII: Counting Flavors
+Now that we have covered the basics, let's revisit an old friend, [Workshop 15](https://fullstack.instructure.com/courses/732/assignments/30854?module_item_id=229360). 
+
+We've already rebuilt 90% of the functionality in React! All that's left to do is to update the state so that instead of keeping track of a list of flavors, it keeps track of unique flavors and how many times each one has been entered. That is, if a user enters the following into the form:
+- Vanilla
+- Chocolate
+- Strawberry
+- Chocolate
+- Vanilla
+- Vanilla
+- Mint
+
+Then we'd expect to see the following list:
+- Vanilla: 3
+- Chocolate: 2
+- Strawberry: 1
+- Mint: 1
+
+### Task 17
+Updazte the `froyo-orders-react` app so that instead of a list of all flavors entered, there is 1 list item per unique flavor, along with the number of times that flavor has been input.
+
+If you can't remember the exact way to implement the above, remember that we do have solutions posted in our cohort repo. If you just want a hint, here's how it should work:
+
+  - given a list of flavors
+  - iterate over each flavor
+  - if we've never seen the flavor before, updatet the state for that flavor to have a count of 1
+  - if we've seen it before, increment the existing count by 1
+
+The other tricky bit would be updating state, as again,  you should *not* mutate the old state. Here's an example of how to add a new flavor to an existing object:
+```javascript
+const [flavors, setFlavors] = useState({});
+
+const flavor = "vanilla";
+
+// Create a new object with all the key/value pairs of the old object,
+// plus a new pair. 
+// If we had { chocolate: 1 } before, this would produce 
+// { chocolate: 1, vanilla: 1 }
+setFlavors({
+  ...flavors,
+  [flavor]: 1
+})
+
+// Create a new object with all the key/value pairs of the old object, with the given key incremented by one.  
+// If we had { chocolate: 1, vanilla: 1} before, this would
+// produce { chocolate: 1, vanilla: 2 }
+setFlavors({
+  ...flavors,
+  [flavor]: flavors[flavor] + 1
+})
+```
+
+### Part IX: Make it Pretty
+One thing we've been intentionally avoiding with all this talk about behavior is styling. In React, you can use inline styles with the `style` prop:
+
+```
+export const RedText = (props) => {
+  return (
+    <h2 style={{ color: "red", backgroundColor: "black" }}>{props.text}</h2>
+  );
+}
+```
+
+One thing to keep in mind when specifying styles this way is that the property names are camel case, much like when changing styles in vanilla JavaScript:
+```javascript
+const h2 = document.querySelector("red-text");
+h2.style.text = "red";
+h2.style.backgroundColor = "black";
+```
+
+With bundlers like Parcel, you can also include css directly. Let's say you had a CSS File named `RedText.css`:
+
+```css
+.red-text {
+  color: red;
+  background-color: black;
+}
+```
+
+You could use it as follows:
+```javascript
+import './RedTxt.css';
+
+export const RedText = (props) => {
+  return (
+    <h2 className="red-text">{props.text}</h2>
+  );
+}
+```
+
+### Task 18
+Using the styling method you prefer, update your various components to make the page layout more pleasing to the eye. 
+
+As style is very subjective, the solution provided is purely to help you check syntax if you run into issues.
