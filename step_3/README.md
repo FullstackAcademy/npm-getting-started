@@ -542,7 +542,7 @@ Then we'd expect to see the following list:
 - Mint: 1
 
 ### Task 17
-Updazte the `froyo-orders-react` app so that instead of a list of all flavors entered, there is 1 list item per unique flavor, along with the number of times that flavor has been input.
+Update the `froyo-orders-react` app so that instead of a list of all flavors entered, there is 1 list item per unique flavor, along with the number of times that flavor has been input.
 
 If you can't remember the exact way to implement the above, remember that we do have solutions posted in our cohort repo. If you just want a hint, here's how it should work:
 
