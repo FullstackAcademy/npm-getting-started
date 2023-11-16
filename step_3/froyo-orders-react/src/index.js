@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { MyList } from "./MyList";
+import { App } from "./App";
 
 const root = createRoot(document.querySelector("#app"));
-root.render(<MyList />);
+root.render(<App />);
