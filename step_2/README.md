@@ -48,6 +48,6 @@ The reason for doing such a thing is that in this case, having such a helper fun
 
 ### Task 6
 1. Edit `index.js` and update the program to print out the product of the `numbers` variable, as well as which numbers are odd. Use similar formatting to what was used when printing out the sum of all numbers and which numbers were even.
-2. Uncomment the last line and try running the code. What happens?
-3. Update `numbers.js` so that `isEven` is exported, and add it to your import statement in `index.js`. 
+2. Add `isEven` to your imports, uncomment the last line in `index.js` and try running the code. What happens?
+3. Update `numbers.js` so that `isEven` is exported
 4. Try running the code again, and it should work now
