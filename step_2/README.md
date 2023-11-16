@@ -9,7 +9,7 @@ By the end of this step, you should understand how to:
 - use [parcel](https://parceljs.org/) to bundle NPM projects into a web application
 - use [React](https://react.dev/) to make simple web applications
 
-## Part I: Named Imports 
+## Part I: Named Imports and Exports
 We last left off by asking you to add the following line to the top of your `index.js` file:
 
 ```javascript
@@ -30,13 +30,13 @@ Evens: [ 2, 4, 6, 8, 10 ]
 Sum: 55
 ```
 
-If you then take a look at the top of [./part_1/src/index.js](https://github.com/FullstackAcademy/npm-getting-started/blob/main/step_2/task_1/src/index.js), you should see the following import line:
+If you then take a look at the top of `./task_6/src/index.js`, you should see the following import line:
 ```javascript
 
 import { evens, sum } from './numbers.js';
 ```
 
-If you then look at [./part_1/src/numbers.js](https://github.com/FullstackAcademy/npm-getting-started/blob/main/step_2/task_1/src/numbers.js), you should see a series of function definitions that look identical to functions we've written in the past, with 1 exception: the `export` keyword.
+If you then look at `./task_6/src/numbers.js`, you should see a series of function definitions that look identical to functions we've written in the past, with 1 exception: the `export` keyword.
 
 If you've been doing the [exercism](https://exercism.org/tracks/javascript) exercises, this might look familiar.
 
@@ -51,3 +51,20 @@ The reason for doing such a thing is that in this case, having such a helper fun
 2. Add `isEven` to your imports, uncomment the last line in `index.js` and try running the code. What happens?
 3. Update `numbers.js` so that `isEven` is exported
 4. Try running the code again, and it should work now
+
+## Part 2: Default Imports and Exports
+Another way to import code is with a default import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#default_import). The syntax is similar to named imports, except that it's restricted to importing a single item, and doesn't include curly braces. If you take a look at [./task_2/src/index.js](https://github.com/FullstackAcademy/npm-getting-started/blob/main/step_2/task_2/src/index.js) you'll see an example:
+
+```
+import Numbers from './numbers.js';
+```
+
+You'll also notice that rather than calling functions, we instantiate the class `Numbers` and call methods on it instead of calling functions. 
+
+If you then take a look at `./task_7/src/index.js`, you'll see that we defined the `Numbers` class and converted all the functions into methods instead. The other thing to notice is that instead of `export class` as you might expect, we have `export default class`. This is what makes it a default export.
+
+### Task 7
+1. Remove the keyword `default` from the export in `./task_7/src/numbers.js`. 
+2. Try to run the code again. What happens?
+3. Update the import statement in `./task_7/src/index.js` so that it uses named imports for the `Numbers` class
+4. Try running the code again
