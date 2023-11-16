@@ -1,9 +1,9 @@
 import { Flavor } from './Flavor';
-import { HelloButton } from './HelloButton';
+import { Counter } from './Counter';
 export const App = () => {
   return (
     <div>
-      <HelloButton />
+      <Counter />
       <ul>
         <Flavor name="Vanilla" />
         <Flavor name="Chocolate" />
