@@ -1,6 +1,6 @@
 const isEven = number => number % 2 === 0;
 
-export default class Numbers {
+export class Numbers {
   constructor(numbers) {
     this.numbers = numbers;
   }
