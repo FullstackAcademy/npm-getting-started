@@ -498,8 +498,8 @@ export const ThreeFlavors = () => {
 }
 ```
 
-### Task 15
-1. Create a new component named `FlavorList` that takes a single prop named `flavors`, which should be a list of strings and returns a `<ul>` full of `<Flavor>`s where each flavor's `name` prop comes from the `flavors` prop
+### Task 16
+1. Create a new component named `FlavorList` that takes a single prop named `flavors`, which should be a list of strings and returns a `<ul>` full of `<Flavor>`s where each flavor's `name` prop comes from the `flavors` prop. Don't forget to give each mapped `Flavor` a `key` prop!
 2. Update the `FlavorForm` component to import and use the new `FlavorList` component instead of rendering a `ul` with exactly one item in it
 3. Change the state used in `FlavorForm` from being a single string named
 `flavor` to an array of strings named `flavors`, and similarly rename `setFlavor` to `setFlavors`
