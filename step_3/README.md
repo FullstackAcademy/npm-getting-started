@@ -383,8 +383,69 @@ span.textContent = `${count}`;
 
 Notice how it's almost the same, but we don't have a leading `$` in JSX?
 
- ### Task 14
- 1. Create another component at `src/Counter.jsx` with the contents of the previous example in it
- 2. Replace the `HelloButton` with the `Counter` inside of your `App` component
+### Task 14
 
- Confirm that the counter works.
+1. Create another component at `src/Counter.jsx` with the contents of the previous example in it
+
+2. Replace the `HelloButton` with the `Counter` inside of your `App` component
+
+Confirm that the counter works.
+
+### Part VI: Forms
+Now that we have gotten the preliminaries out of the way, we can finally do something interesting with our Froyo App.
+
+If we want to collect text input and then respond to it, we can use a form like we would in vanilla JavaScript. That is, if we would normally write the following HTML:
+
+```html
+<form>
+  <label for="flavor">Flavor</label>
+  <input id="flavor" type="text">  
+  <button type="submit">Show Flavor</button>
+  <output for="flavor"></output>
+</form>
+```
+
+We could write the following in JavaScript:
+```javascript
+document.querySelector("form").addEventListener("submit", evt => {
+  evt.preventDefault();
+
+  const flavor = evt.target.flavor.value;
+  document.querySelector("output").textContent = flavor;
+});
+```
+
+In React, we'd write something like this instead:
+```javascript
+import { useState } from 'react';
+
+export const FlavorForm = () => {
+  const [flavor, setFlavor] = useState("");
+
+  return (
+    <form onSubmit={evt => {
+        evt.preventDefault();
+        setFlavor(evt.target.flavor);
+    }}>
+      <label for="flavor">Flavor</label>
+      <input id="flavor" type="text">  
+      <button type="submit">Show Flavor</button>
+      <output for="flavor">{flavor}</output>
+    </form>
+  );
+};
+```
+### Task 15
+1. Create a new component at `./FlavorForm.jsx` with the following behavior:
+  - imports the `Flavor` component
+  - it uses a state variable named `flavor` with a default value of `"Vanilla"`
+  - renders a form with a single input that, when submitted, uses `setFlavor` to change the state value
+  - renders a `ul` with a single `Flavor` component inside of it, using the `flavor` state as a `name`
+2. Update the App component so that it no longer includes the `Counter` component or `ul`. That is, the `App` component should end up rendering the following:
+```jsx
+<div>
+  <CounterForm />
+</div>
+```
+
+You should be able to change the flavor that shows up, but new flavors should *not* be added to the `ul` rendered by the `FlavorForm` component.
