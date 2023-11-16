@@ -112,3 +112,9 @@ As soon as you save the file, you should see that the server automatically updat
 when you use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VS Code to preview your static web pages!
 
 More importantly though, you should now see that like our original version, refreshing the page automatically updates the page with a new random name!
+
+## Conclusion
+In this step, we built on top of the last lesson and learned to not only *use* modules, but define our own. We then learned how to use Parcel to take an NPM package and turn it into an app that can run in the browser. Finally, we updated our app that only worked with node and turned it into a web page that ran like our original
+HTML + JavaScript version.
+
+In the next step, we'll (finally) start playing with React!
