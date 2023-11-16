@@ -438,6 +438,7 @@ export const FlavorForm = () => {
   );
 };
 ```
+
 ### Task 15
 1. Create a new component at `./FlavorForm.jsx` with the following behavior:
   - imports the `Flavor` component
@@ -452,3 +453,73 @@ export const FlavorForm = () => {
 ```
 
 You should be able to change the flavor that shows up, but new flavors should *not* be added to the `ul` rendered by the `FlavorForm` component.
+
+### Part VII: React Keys
+Now that we can dynamically render a single flavor based on what the user types, let's render as many flavors as the user can enter. 
+
+In React, we can dynamically render multiple elements by iterating over an array
+with the `.map()` method. One peculiarity we have to deal with, however, is that
+when using `.map()`, we have to add an extra prop named `key` to each rendered
+element. This element should be unique for each item.  
+
+For more information on why that's the case, feel free to check out the [official documentation on the subject](https://react.dev/learn/rendering-lists). For now though, just take our word for it that it's needed. 
+
+Here's an example of how we can render an array of things dynamically:
+```javascript
+import { Flavor } from './Flavor';
+
+export const FlavorList = (props) => {
+  return (
+    <ul>
+      {props.flavors.map(flavor => (
+        <li key={flavor}>{flavor}</li>
+      ))}
+    </ul>
+  );
+} 
+```
+
+
+Here' we use the flavor itself as a key. This is not very safe because flavors might not be unique. You might be tempted to use the index as a key, but [that is frowed upon](https://react.dev/learn/rendering-lists#why-does-react-need-keys). 
+
+There are a few ways we could address this, but as our final app will guarantee that flavors are unique, we won't concern ourselves with the problem here. Just be sure to enter unique flavors for now!
+
+Anyway, we can use our `FlavorList` component like this:
+```
+<FlavorList flavors={["Vanilla", "Chocolate", "Strawberry"]}>
+```
+
+We can of course use it in a full compoent and replace the hard-coded list with a variable:
+
+```javascripot
+const FLAVORS = ["Vanilla", "Chocolate", "Strawberry"];
+export const ThreeFlavors = () => {
+  return <FlavorList flavors={FLAVORS} />
+}
+```
+
+### Task 15
+1. Create a new component named `FlavorList` that takes a single prop named `flavors`, which should be a list of strings and returns a `<ul>` full of `<Flavor>`s where each flavor's `name` prop comes from the `flavors` prop
+2. Update the `FlavorForm` component to import and use the new `FlavorList` component instead of rendering a `ul` with exactly one item in it
+3. Change the state used in `FlavorForm` from being a single string named
+`flavor` to an array of strings named `flavors`, and similarly rename `setFlavor` to `setFlavors`
+4. Instead of passing a default value of `"Vanilla"`, pass an empty array as the default value
+5. Pass the `flavors` state value as a prop named `flavors` to the `FlavorList` component that `FlavorForm` now renders.
+6. Update the `onSubmit` handler so that the entered flavor is added to the `flavors` state variable
+
+Keep in mind that your `set` functions except new values, not mutated ones. That is, you might be tempted to do something like this in your event handler:
+```javascript
+const newFlavor = evt.target.flavor.value;
+flavors.push(newFlavor);
+```
+
+That will not work due to how React observes changes. What you should do instead
+is pass a *new* array. You can accomplish this rather easily by using 
+[spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax):
+```javascript
+const newFlavor = evt.target.flavor.value;
+setFlavors([
+  ...flavors,
+  newFlavor
+]);
+```
