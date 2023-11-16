@@ -1,10 +1,14 @@
 import { Flavor } from './Flavor';
+import { HelloButton } from './HelloButton';
 export const App = () => {
   return (
-    <ul>
-      <Flavor name="Vanilla" />
-      <Flavor name="Chocolate" />
-      <Flavor name="Strawberry" />
-    </ul>
+    <div>
+      <HelloButton />
+      <ul>
+        <Flavor name="Vanilla" />
+        <Flavor name="Chocolate" />
+        <Flavor name="Strawberry" />
+      </ul>
+    </div>
   );
 }
