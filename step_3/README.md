@@ -341,6 +341,7 @@ Three things to note:
 ### Task 13
 1. Create another file, `./src/HelloButton.jsx` and add the contents of the `HelloButton` example above to it
 2. Update your `App` component by wrapping the `<ul>` in a `<div>`, then add a `<HelloButton />` above the `<ul>`
+3. Don't forget to import `HelloButton`!
 
 Confirm that clicking the button shows the alert box.
 
@@ -381,3 +382,9 @@ span.textContent = `${count}`;
 ```
 
 Notice how it's almost the same, but we don't have a leading `$` in JSX?
+
+ ### Task 14
+ 1. Create another component at `src/Counter.jsx` with the contents of the previous example in it
+ 2. Replace the `HelloButton` with the `Counter` inside of your `App` component
+
+ Confirm that the counter works.
