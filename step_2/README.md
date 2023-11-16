@@ -46,7 +46,7 @@ Note that the `isEven` function is *not* preceded by an `export` keyword. That m
 
 The reason for doing such a thing is that in this case, having such a helper function made writing `evens` and `odds` easy without having to duplicate much code. However, we want (for our own selfish reasons, not any practical one) to only make available those functions that operate on arrays of numbers, so we choose not to export it.
 
-### Task 1
+### Task 6
 1. Edit `index.js` and update the program to print out the product of the `numbers` variable, as well as which numbers are odd. Use similar formatting to what was used when printing out the sum of all numbers and which numbers were even.
 2. Uncomment the last line and try running the code. What happens?
 3. Update `numbers.js` so that `isEven` is exported, and add it to your import statement in `index.js`. 
