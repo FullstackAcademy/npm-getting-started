@@ -297,4 +297,87 @@ It should render as a `<li>` tag, not a `<p>` tag
   - instead, imports `App`
   - renders the `App` component at the root instead of `MyList`
 
-## Part IV: Rendering Multiple things
+## Part IV: Responding to User Input
+Now that we have a reusable component, it would be nice if we could create them on the fly. That is, we still have to update the source code if we want to see different (or more) flavors. What we would like to be able to do instead is show a flavor based on what a user types.
+
+Before we do that, we need to take a brief detour to talk about events. In HTML, you can assign events to elements by using the appropriate attribute:
+```html
+<button onclick="alert('hi')">Hello</button>
+```
+
+Alternatively, we can attach even handlers in JavaScript. Given the following HTML:
+```html
+<button id="hello-button">Hello</button>
+```
+
+We can write the following JavaScript:
+```javacript
+document.querySelector("#hello").addEventListener("click", () => {
+  alert("hi");
+});
+```
+
+The former style is convenient because you don't have to leave HTML, but is cumbersome if you need more intricate behavior. The latter is more maintainable, but suffers from needing to select the element first and also remembering that `onclick` becomes `"click"` when adding the event listener.
+
+In React, we can [resond to events](https://react.dev/learn/responding-to-events) with a syntax that combines the bets of both worlds:
+```javascript
+export const HelloButton = () => {
+  return (
+    <button 
+      onClick={() => {
+        alert("hi");
+      }}
+    >
+      Hello
+    </button>
+  );
+}
+```
+Three things to note:
+1. The spelling for an event is camel case instead of all lowercase (`onClick`, not `onclick`)
+2. Like vanilla JavaScript, we pass a callback rather than calling the `alert` function directly like we did in HTML
+3. We had to wrap the callback in curly braces. This will be common theme in JSX -- if you want to use arbitrary JavaScript expressions in JSX markup, you have to surround it in `{}`.
+
+### Task 13
+1. Create another file, `./src/HelloButton.jsx` and add the contents of the `HelloButton` example above to it
+2. Update your `App` component by wrapping the `<ul>` in a `<div>`, then add a `<HelloButton />` above the `<ul>`
+
+Confirm that clicking the button shows the alert box.
+
+## Part V: Keeping Track of State
+
+Now that we can respond to input, we need a way to remember that input -- we
+need to talk about state. In React, you save state by using a
+[hook](https://react.dev/reference/react/hooks) called `useState`. Explaining
+how hooks work and discussing the various other types of hooks that exist is
+beyond the scope of this guide, but we will at least show you how to use them.
+`useState` is a function that takes an optional argument and returns a list
+containing exactly 2 elements:
+- the first is the current state value
+- the second is a function that can be used to update the state
+
+The optional argument is the default value of your state. If you don't have a sane default, you can use `null`  or pass no arguments, which would make the default `undefined`.
+
+That's a lot, so let's see it in action. Let's say we wanted to create a component that consists of a button that, when clicked, increases the count and displays that count in a span. You can implement that like this:
+```javascript
+import { useState } from 'react';
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <span>{count}</span>
+    </div>
+  );
+}
+```
+
+Remember: For displaying arbitrary JavaScript expressions, you have to use `{}`. It's analogous to how we use template literals when setting a DOM nodes' `innerHTML` or `textContent`:
+```javascript
+const count = 2;
+const span = document.createElement("span");
+span.textContent = `${count}`;
+```
+
+Notice how it's almost the same, but we don't have a leading `$` in JSX?
