@@ -50,7 +50,7 @@ mkdir src
 ```
 
 Then add the file `src/index.html` with the following in it:
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,21 +89,6 @@ HTML:
 ```
 
 JavaScript:
-```javascript
-// Variables starting with "$" are DOM elements 
-const $ul = document.createElement("ul");
-$ul.classList.add("my-list")
-
-["First", "Second", "Third"].forEach(content => {
-    const $li = document.createElement("li");
-    $li.textContent = content;
-    $ul.appendChild($li)
-});
-
-document.body.replaceChildren($ul);
-```
-
-JavaScript (alternative):
 ```javascript
 
 // Variables starting with "$" are DOM elements 
