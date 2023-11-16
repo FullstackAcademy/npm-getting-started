@@ -1,5 +1,5 @@
 export const Flavor = (props) => {
   return (
-    <li>{props.name}</li>
+    <li>{props.name}: {props.count}</li>
   );
 }

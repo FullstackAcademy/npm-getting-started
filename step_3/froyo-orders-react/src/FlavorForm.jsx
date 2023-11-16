@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { FlavorList } from './FlavorList';
 
 export const FlavorForm = () => {
-  const [flavors, setFlavors] = useState([]);
+  const [flavors, setFlavors] = useState({});
 
   return (
     <div>
       <form onSubmit={evt => {
           evt.preventDefault();
+
           const flavorInput = evt.target.flavor;
-          setFlavors([
+          const newFlavor = flavorInput.value;
+
+          setFlavors({
             ...flavors,
-            flavorInput.value
-          ]);
+            [newFlavor]: newFlavor in flavors ? flavors[newFlavor] + 1 : 1
+          });
           flavorInput.value = "";
       }}>
         <label htmlFor="flavor">Flavor</label>
