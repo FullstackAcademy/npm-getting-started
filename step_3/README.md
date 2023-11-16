@@ -410,8 +410,9 @@ We could write the following in JavaScript:
 document.querySelector("form").addEventListener("submit", evt => {
   evt.preventDefault();
 
-  const flavor = evt.target.flavor.value;
-  document.querySelector("output").textContent = flavor;
+  const flavorInput = evt.target.flavor;
+  document.querySelector("output").textContent = flavorInput.value;
+  flavorInput.value = "";
 });
 ```
 
@@ -425,12 +426,14 @@ export const FlavorForm = () => {
   return (
     <form onSubmit={evt => {
         evt.preventDefault();
-        setFlavor(evt.target.flavor);
+        const flavorInput = evt.target.flavor;
+        setFlavor(flavorInput.value);
+        flavorInput.value = ""
     }}>
-      <label for="flavor">Flavor</label>
-      <input id="flavor" type="text">  
+      <label htmlFor="flavor">Flavor</label>
+      <input id="flavor" type="text" />  
       <button type="submit">Show Flavor</button>
-      <output for="flavor">{flavor}</output>
+      <output htmlFor="flavor">{flavor}</output>
     </form>
   );
 };
