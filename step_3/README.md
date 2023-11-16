@@ -174,3 +174,127 @@ npm run start
 ```
 
 Pro-Tip: Before continuing, be sure to commit your work!
+
+## Part III: Rendering Dynamic Content
+It can be argued that for a simple, static unordered list, JavaScript, let alone React are overkill. Where JavaScript becomes useful is when we want to display dynamic content instead. Let's compare JavaScript and React again.
+
+JavaScript:
+```javascript
+// Variables starting with "$" are DOM elements 
+const FLAVOR = "Vanilla";
+
+const $flavor = document.createElement("p");
+$flavor.textContent = FLAVOR;
+
+document.body.appendChild($flavor);
+```
+
+React:
+```javascript
+import { createRoot } from "react-dom/client";
+
+const FLAVOR = "Vanilla";
+
+const Flavor = () => {
+  return (
+    <p>{FLAVOR}</p>
+  );
+}
+
+const root = createRoot(document.querySelector("#app"));
+root.render(<Flavor />);
+```
+
+In a way, the last example is still static, in so far as teh favor is hard-coded -- the flavor only changes if someone changes how `FLAVOR` is defined. Let's make flavors configurable. And render more than one of them.
+
+JavaScript:
+```javascript
+// Variables starting with "$" are DOM elements 
+const createFlavor = name => {
+  // Let's use an li instead of a p tag this time since
+  // we're rendering multiple of these
+  const $flavor = document.createElement("li");
+  $flavor.textContent = name;
+
+  return $flavor;
+}
+
+const $div = document.createElement("ul");
+$div.replaceChildren(
+  createFlavor("Vanilla"),
+  createFlavor("Chocolate"),
+  createFlavor("Strawberry"),
+);
+```
+
+React:
+```javascript
+import { createRoot } from "react-dom/client";
+
+const Flavor = (props) => {
+  return (
+    <li>{props.name}</li>
+  );
+}
+
+const App = () => {
+  return (
+    <ul>
+      <Flavor name="Vanilla">
+      <Flavor name="Chocolate">
+      <Flavor name="Strawberry">
+    </ul>
+  );
+}
+
+const root = createRoot(document.querySelector("#app"));
+root.render(<App />);
+```
+
+In the vanilla JavaScript version, we created a function named `createFlavor` that took a single `name` argument and used that to fill out the text content for the `li` tag.
+
+In react, components can only take a single argument, named [props](https://react.dev/learn/passing-props-to-a-component), which is an object. The keys of that argument are the prop names, and the values are the prop values. That is, the following:
+```jsx
+<Person name="Edwin" title="Mentor" location="Portland">
+```
+
+Translates to this object being passed to the component:
+```javascript
+{
+  name: "Edwin",
+  title: "Mentor",
+  location: "Portland"
+}
+```
+
+Inside of the component, it can be accessed like this:
+```javascript
+const Person = (props) => {
+  return (
+    <ul>
+      <li>{props.name}</li>
+      <li>{props.title}</li>
+      <li>{props.location}</li>
+    </ul>
+  );
+}
+```
+
+These code examples are starting to get messy. Let's add a `Flavor` component to our project and do a bit of organizing while we're at it.
+
+### Task 12
+1. Create a new file at `src/Flavor.jsx` and define a component in it that takes
+a single `name` prop like our example above. Make sure to export that function.
+It should render as a `<li>` tag, not a `<p>` tag
+2. Create another component at `src/App.js` that does the following:
+  - imports the `Flavor` component
+  - it renders a `<ul>` tag with three children:
+  - a `Flavor` with a name of "Vanilla"
+  - a `Flavor` with a name of "Chocolate"
+  - a `Flavor` with a name of "Strawberry"
+3. Update `src/index.js` so that it does hte following:
+  - no longer imports `MyList`
+  - instead, imports `App`
+  - renders the `App` component at the root instead of `MyList`
+
+## Part IV: Rendering Multiple things
