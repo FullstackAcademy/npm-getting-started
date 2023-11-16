@@ -100,7 +100,7 @@ see a random name in the terminal!
 ## Part 4: Final Touches
 At this point, we're back to using a web app, but it's not quite satisfying, is it? We can come full circle by re-introducing DOM manipulation.
 
-### Task 8
+### Task 9
 Let's update `index.js` to do DOM manipulation so that it works like our original app:
 
 ```diff
