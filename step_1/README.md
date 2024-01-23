@@ -115,7 +115,7 @@ touch src/index.js
 
 If you update the `src/index.js` file to have some simple code, say `console.log("Hello, world!")` you should be able to run it using node:
 ```shell
-node ./src/index.js.
+node ./src/index.js
 ```
 
 In our next task, we will instead show you how to use NPM to run your code.
